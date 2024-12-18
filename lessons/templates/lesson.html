@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок: {{ lesson.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .lesson-detail {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .lesson-detail h1 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .lesson-detail p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .lesson-navigation {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .lesson-navigation a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .lesson-navigation a:hover {
+            background-color: #0056b3;
+        }
+
+        .test-link {
+            margin-top: 30px;
+        }
+
+        .test-link a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .test-link a:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Хедер -->
+<header>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/courses">Курсы</a>
+        <a href="/profile">Профиль</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="lesson-detail">
+        <h1>Урок: {{ lesson.title }}</h1>
+        <p>{{ lesson.content }}</p>
+
+        <div class="lesson-navigation">
+            {% if previous_lesson %}
+                <a href="{% url 'lesson_detail' lesson_id=previous_lesson.id %}" class="btn btn-primary">Назад</a>
+            {% endif %}
+            {% if next_lesson %}
+                <a href="{% url 'lesson_detail' lesson_id=next_lesson.id %}" class="btn btn-primary">Далее</a>
+            {% endif %}
+        </div>
+
+        <div class="test-link">
+            <a href="{% url 'task' lesson_id=lesson.id %}" class="btn btn-success">Пройти тест</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LearnKazakh. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

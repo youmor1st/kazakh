@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты куиза</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Стили хедера */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .result-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .result-container h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .result-container p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .result-container .btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .result-container .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>LearnKazakh</h1>
+</header>
+
+<div class="container">
+    <div class="result-container">
+        <h1>Результаты куиза</h1>
+        <p>Вы правильно ответили на <strong>{{ score }}</strong> из <strong>{{ total }}</strong> вопросов.</p>
+        <a href="{% url 'lesson_detail' lesson.id %}" class="btn btn-secondary">Вернуться к уроку</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LearnKazakh. Все права защищены.</p>
+</footer>
+
+</body>
+</html>

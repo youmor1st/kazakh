@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Куиз по теме: {{ lesson.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Стили хедера */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-container h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .question-block {
+            margin-bottom: 20px;
+        }
+
+        .question-block p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options-list li {
+            margin-bottom: 10px;
+        }
+
+        .options-list label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>LearnKazakh</h1>
+</header>
+
+<div class="container">
+    <div class="quiz-container">
+        <h1>Куиз по теме: {{ lesson.title }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for question in questions %}
+            <div class="question-block">
+                <p><strong>{{ forloop.counter }}. {{ question.question }}</strong></p>
+                <ul class="options-list">
+                    <li>
+                        <label>
+                            <input type="radio" name="q{{ question.id }}" value="1">
+                            {{ question.option1 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="q{{ question.id }}" value="2">
+                            {{ question.option2 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="q{{ question.id }}" value="3">
+                            {{ question.option3 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="q{{ question.id }}" value="4">
+                            {{ question.option4 }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LearnKazakh. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
